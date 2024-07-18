@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: aioj-backend
+  main:
+    banner-mode: off # 关闭启动图标
+  # 默认 dev 环境
+  profiles:
+    active: dev
+  # 支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # session 配置
+  session:
+    # todo: 取消注释开启分布式 session（须先配置 Redis）
+    store-type: redis
+    # 30 天过期
+    timeout: 2592000
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.134.169.7/aioj?serverTimezone=Asia/Shanghai
+    username: root
+    password: aliyun123456
+  data:
+    # Redis 配置
+    redis:
+      database: 1
+      host: 8.134.169.7
+      port: 6379
+      timeout: 5000
+      password: aliyunredis
+# mybatis-plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+    banner: off # 关闭启动图标
+
+

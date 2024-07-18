@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxr.aiojbakcend.mapper.AuthMapper">
+
+    <resultMap id="BaseResultMap" type="com.zxr.aiojbakcend.model.domain.Auth">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="permission" column="permission" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,permission,
+        status,gmt_create,gmt_modified
+    </sql>
+    <select id="selectPermissionByUserId" resultType="java.lang.String">
+        select distinct a.permission
+        from user_role ur
+                 left join role r on r.id = ur.role_id
+                 left join role_auth ra on ur.role_id = ra.role_id
+                 left join auth a on ra.auth_id = a.id
+        where ur.uid = #{userId}
+          and r.status = 0
+          and a.status = 0;
+    </select>
+
+</mapper>

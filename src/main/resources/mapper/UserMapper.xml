@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxr.aiojbakcend.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.zxr.aiojbakcend.model.domain.User">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="idNum" column="id_num" jdbcType="VARCHAR"/>
+            <result property="firstName" column="first_name" jdbcType="VARCHAR"/>
+            <result property="lastName" column="last_name" jdbcType="VARCHAR"/>
+            <result property="identity" column="identity" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="sex" column="sex" jdbcType="TINYINT"/>
+            <result property="avatarImageUrl" column="avatar_image_url" jdbcType="VARCHAR"/>
+            <result property="personalSignature" column="personal_signature" jdbcType="VARCHAR"/>
+            <result property="personProfile" column="person_profile" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="idDelete" column="id_delete" jdbcType="TINYINT"/>
+            <result property="gmtCreated" column="gmt_created" jdbcType="TIMESTAMP"/>
+            <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,phone,password,
+        nick_name,id_num,first_name,
+        last_name,identity,email,
+        sex,avatar_image_url,personal_signature,
+        person_profile,status,id_delete,
+        gmt_created,gmt_modified
+    </sql>
+</mapper>
