@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   application:
     name: aioj-backend
@@ -30,6 +32,7 @@ spring:
       port: 6379
       timeout: 5000
       password: aliyunredis
+
 # mybatis-plus配置
 mybatis-plus:
   configuration:
@@ -41,5 +44,37 @@ mybatis-plus:
       logic-delete-value: 1 # 逻辑已删除值（默认为 1）
       logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
     banner: off # 关闭启动图标
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: method
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan:
+        # 扫描包路径,一般为启动类的路径
+        - com.zxr.aiojbakcend
 
+
+# knife4j配置
+knife4j:
+  # 是否开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+  production: false
+  #是否开启登录认证
+#  basic:
+#    enable: false
+#    username: admin
+#    password: admin
+  # 个性化配置
+  setting:
+    language: zh-cn
+    enable-version: true
+    enable-swagger-models: true
+    swagger-model-name: AIGC在线判题系统
 

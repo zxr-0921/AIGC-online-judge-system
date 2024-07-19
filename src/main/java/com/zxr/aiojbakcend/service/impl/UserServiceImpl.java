@@ -65,7 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 序列化loginUser
         String loginUserJson = new Gson().toJson(loginUser);
 
-        System.out.println("序列化后的对象"+loginUserJson);
+        log.debug("序列化后的对象"+loginUserJson);
 
         // 用户信息存到redis
         stringRedisTemplate.opsForValue().set(UserConstant.USER_LOGIN_STATE + userId, loginUserJson);

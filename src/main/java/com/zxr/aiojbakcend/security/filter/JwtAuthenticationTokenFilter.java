@@ -31,7 +31,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 1.获取请求头中的token
         String token = request.getHeader("token");
-        System.out.println("请求token: " + token);
         // 判断token是否为空
         if (StringUtils.isBlank(token)) {
             // 如果token为空，放行
