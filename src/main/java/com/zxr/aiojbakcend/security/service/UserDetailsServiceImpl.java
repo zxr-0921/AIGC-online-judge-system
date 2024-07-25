@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zxr.aiojbakcend.common.ErrorCode;
 import com.zxr.aiojbakcend.exception.BusinessException;
 import com.zxr.aiojbakcend.mapper.AuthMapper;
+import com.zxr.aiojbakcend.mapper.RoleMapper;
 import com.zxr.aiojbakcend.mapper.UserMapper;
 import com.zxr.aiojbakcend.security.entity.LoginUser;
 import com.zxr.aiojbakcend.model.domain.User;
@@ -28,6 +29,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private AuthMapper authMapper;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
         // 根据手机号查询用户
@@ -37,12 +41,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (Objects.isNull(user)) {
             throw new BusinessException(ErrorCode.USER_NOT_FOUND);
         }
-        // todo:要从数据库查询，现在写死进行测试
-//        ArrayList<String> list = new ArrayList<>();
-//        list.add("test");
-        List<String> list = authMapper.selectPermissionByUserId(user.getId());
+        // 根据用户id查询用户权限
+        List<String> permission = authMapper.selectPermissionByUserId(user.getId());
+        // 查询用户角色
+        String role = roleMapper.selectRoleByUserId(user.getId());
+        System.out.println("role = " + role);
         // UserDetails接口的实现类
-        return new LoginUser(user,list);
+        return new LoginUser(user,permission,role);
     }
 }
 

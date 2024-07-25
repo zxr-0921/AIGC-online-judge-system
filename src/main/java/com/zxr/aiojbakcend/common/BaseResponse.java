@@ -22,4 +22,10 @@ public class BaseResponse<T> implements Serializable {
         this.message = resultStatus.getDescription();
         this.data = data;
     }
+
+    public BaseResponse(ResultStatus resultStatus, T data, String mes) {
+        this.code = resultStatus.getStatus();
+        this.message = mes;
+        this.data = data;
+    }
 }

@@ -33,6 +33,10 @@ spring:
       timeout: 5000
       password: aliyunredis
 
+# 日志配置
+logging:
+  level:
+    root: INFO
 # mybatis-plus配置
 mybatis-plus:
   configuration:

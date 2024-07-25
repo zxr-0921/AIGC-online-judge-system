@@ -41,7 +41,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 2.解析token获取用户id
         JWT jwt = JWTUtil.parseToken(token);
         String userId = jwt.getPayload("userId").toString();
-        // 从redis中获取token
+        // 从redis中获取用户信息
         String loginUserJson = stringRedisTemplate.opsForValue().get(UserConstant.USER_LOGIN_STATE + userId);
 
         // 判断redis中的loginUser是否为空

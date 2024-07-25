@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zxr.aiojbakcend.common.BaseResponse;
 import com.zxr.aiojbakcend.model.domain.User;
 import com.zxr.aiojbakcend.model.dto.user.request.UserLoginRequest;
+import com.zxr.aiojbakcend.model.dto.user.request.UserRegisterRequest;
+import com.zxr.aiojbakcend.model.vo.LoginUserVO;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * @author zxr0921
@@ -12,5 +15,30 @@ import com.zxr.aiojbakcend.model.dto.user.request.UserLoginRequest;
 */
 public interface UserService extends IService<User>{
 
+    /**
+     * 用户登录
+     * @param userLoginRequest
+     * @return
+     */
     BaseResponse login(UserLoginRequest userLoginRequest);
+
+    /**
+     * 用户登出
+     * @return
+     */
+    boolean logout();
+
+    /**
+     * 用户注册
+     * @param userRegisterRequest
+     * @return
+     */
+    boolean register(UserRegisterRequest userRegisterRequest);
+
+    /**
+     * 获取当前登录用户信息
+     * @param request
+     * @return
+     */
+    LoginUserVO getLoginUser(HttpServletRequest request);
 }

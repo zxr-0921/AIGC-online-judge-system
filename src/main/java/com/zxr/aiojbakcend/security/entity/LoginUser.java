@@ -20,12 +20,15 @@ public class LoginUser implements UserDetails {
 
     // 用户信息
     private User user;
+    // 存储权限信息
+    private List<String> permissions;
+    // 存储角色信息
+    private String role;
 
-    private List<String> permissions; // 存储权限信息
-
-    public LoginUser(User user, List<String> permissions) {
+    public LoginUser(User user, List<String> permissions, String role) {
         this.user = user;
         this.permissions = permissions;
+        this.role = role;
     }
 
     // todo: 2021/8/3 为什么加上这个注解

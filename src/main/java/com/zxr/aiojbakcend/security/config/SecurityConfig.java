@@ -82,8 +82,9 @@ public class SecurityConfig {
                                         // 允许所有用户访问
 //                                .requestMatchers("/user/register").permitAll()
                                         // swagger-ui放行
-                                        .requestMatchers("/doc.html", "/webjars/**", "/swagger-resources",
-                                                "/swagger-resources/**", "/v3/**", "/favicon.ico", "Mozilla/**","/swagger-ui.html").permitAll()
+                                        .requestMatchers("/doc.html", "/webjars/**",
+                                                "/swagger-resources", "/swagger-resources/**",
+                                                "/v3/**", "/favicon.ico", "Mozilla/**", "/swagger-ui.html").permitAll()
                                         // 其他接口需要认证
                                         .anyRequest().authenticated()
                 )

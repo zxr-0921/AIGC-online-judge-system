@@ -1,13 +1,12 @@
 package com.zxr.aiojbakcend.model.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -15,7 +14,7 @@ import java.util.Date;
  */
 @TableName(value ="user")
 @Data
-public class LoginUserVo implements Serializable {
+public class LoginUserVO implements Serializable {
     /**
      * 手机号
      */
@@ -93,6 +92,16 @@ public class LoginUserVo implements Serializable {
      */
     @TableField(value = "gmt_modified")
     private Date gmtModified;
+
+    /**
+     * 角色
+     */
+    private String role;
+
+    /**
+     * 权限
+     */
+    private List<String> permissions;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

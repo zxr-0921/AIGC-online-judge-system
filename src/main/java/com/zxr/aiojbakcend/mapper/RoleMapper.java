@@ -2,6 +2,7 @@ package com.zxr.aiojbakcend.mapper;
 
 import com.zxr.aiojbakcend.model.domain.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
 * @author zxr0921
@@ -11,6 +12,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface RoleMapper extends BaseMapper<Role> {
 
+    /**
+     * 根据用户id查询用户角色
+     * @param id
+     * @return
+     */
+    @Select("select role from role where id in (select role_id from user_role where uid = #{id})")
+    String selectRoleByUserId(Integer id);
 }
 
 

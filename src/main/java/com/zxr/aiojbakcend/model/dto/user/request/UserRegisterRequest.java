@@ -1,18 +1,16 @@
 package com.zxr.aiojbakcend.model.dto.user.request;
 
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * 用户登录请求
+ * 用户注册请求
  */
-@Schema(name = "UserLoginRequest", description = "用户登录",required = true)
+@Schema(name = "UserRegisterRequest", description = "用户注册",required = true)
 @Data
-public class UserLoginRequest implements Serializable {
+public class UserRegisterRequest implements Serializable {
 
     private static final long serialVersionUID = 3191241716373120793L;
 
@@ -21,4 +19,7 @@ public class UserLoginRequest implements Serializable {
 
     @Schema(name = "password", description = "密码", required = true)
     private String password;
+
+    @Schema(name = "checkPassword", description = "确认密码", required = true)
+    private String checkPassword;
 }

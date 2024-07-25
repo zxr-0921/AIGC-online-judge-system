@@ -1,6 +1,8 @@
 package com.zxr.aiojbakcend.common;
 
 
+import org.apache.poi.ss.formula.functions.T;
+
 /**
  * 返回结果工具类
  */
@@ -26,8 +28,8 @@ public class ResultUtils {
      * @param message
      * @return
      */
-    public static BaseResponse<?> error(int code, String message) {
-        return new BaseResponse<>(code, null, message);
+    public static BaseResponse error(int code, String message) {
+        return new BaseResponse(code, null, message);
     }
 
     /**
@@ -37,7 +39,11 @@ public class ResultUtils {
      * @param message
      * @return
      */
-    public static BaseResponse<?> error(ErrorCode errorCode, String message) {
-        return new BaseResponse<>(errorCode.getCode(), null, message);
+    public static BaseResponse error(ErrorCode errorCode, String message) {
+        return new BaseResponse(errorCode.getCode(), null, message);
+    }
+
+    public static BaseResponse error(String mes) {
+        return new BaseResponse(ResultStatus.FAIL, null, mes);
     }
 }
